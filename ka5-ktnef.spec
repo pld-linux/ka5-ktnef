@@ -1,25 +1,25 @@
-%define		kdeappsver	19.04.1
+%define		kdeappsver	20.12.3
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		ktnef
 Summary:	ktnef
 Name:		ka5-%{kaname}
-Version:	19.04.1
+Version:	20.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	82b20a75a3b4030fa8f7dd336b041004
+Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	7f332042c4ce80e3cd4cad645ed852ff
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
 BuildRequires:	Qt5Test-devel >= 5.9.0
 BuildRequires:	Qt5Widgets-devel
 BuildRequires:	gettext-devel
-BuildRequires:	ka5-kcalcore-devel >= %{kdeappsver}
 BuildRequires:	ka5-kcalutils-devel >= %{kdeappsver}
-BuildRequires:	ka5-kcontacts-devel >= %{kdeappsver}
 BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-kcalendarcore-devel >= %{kframever}
+BuildRequires:	kf5-kcontacts-devel >= %{kframever}
 BuildRequires:	kf5-ki18n-devel >= %{kframever}
 BuildRequires:	ninja
 BuildRequires:	qt5-build >= %{qtver}
@@ -75,10 +75,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-/etc/xdg/ktnef.categories
-/etc/xdg/ktnef.renamecategories
 %attr(755,root,root) %ghost %{_libdir}/libKF5Tnef.so.5
 %attr(755,root,root) %{_libdir}/libKF5Tnef.so.5.*.*
+%{_datadir}/qlogging-categories5/ktnef.categories
+%{_datadir}/qlogging-categories5/ktnef.renamecategories
 
 %files devel
 %defattr(644,root,root,755)
