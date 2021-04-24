@@ -1,15 +1,15 @@
-%define		kdeappsver	20.12.3
+%define		kdeappsver	21.04.0
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		ktnef
 Summary:	ktnef
 Name:		ka5-%{kaname}
-Version:	20.12.3
+Version:	21.04.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	7f332042c4ce80e3cd4cad645ed852ff
+# Source0-md5:	97d295ce658638c1c3da7a7e49344cd8
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -75,8 +75,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %ghost %{_libdir}/libKF5Tnef.so.5
-%attr(755,root,root) %{_libdir}/libKF5Tnef.so.5.*.*
+%ghost %{_libdir}/libKF5Tnef.so.5
+%attr(755,root,root) %{_libdir}/libKF5Tnef.so.*.*.*
 %{_datadir}/qlogging-categories5/ktnef.categories
 %{_datadir}/qlogging-categories5/ktnef.renamecategories
 
@@ -85,5 +85,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/KF5/KTNEF
 %{_includedir}/KF5/ktnef_version.h
 %{_libdir}/cmake/KF5Tnef
-%attr(755,root,root) %{_libdir}/libKF5Tnef.so
+%{_libdir}/libKF5Tnef.so
 %{_libdir}/qt5/mkspecs/modules/qt_KTNef.pri
