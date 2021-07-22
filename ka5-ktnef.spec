@@ -36,6 +36,11 @@ API permits access to the actual attachments, the message properties
 (TNEF/MAPI), and allows one to view/extract message formatted text in
 Rich Text Format format.
 
+%description -l pl.UTF-8
+Biblioteka ktnef zawiera API do obsługi danych TNEF. API pozwala na
+dostęp do załączników, właściwości wiadomości (TNEF/MAPI) i pozwala
+podejrzeć/wyjąć wiadomość w formacie RTF.
+
 %package devel
 Summary:	Header files for %{kaname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kaname}
