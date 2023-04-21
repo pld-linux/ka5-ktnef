@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.12.3
+%define		kdeappsver	23.04.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		ktnef
 Summary:	ktnef
 Name:		ka5-%{kaname}
-Version:	22.12.3
-Release:	2
+Version:	23.04.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	0cfa34cc875d958e36b2dc7d10401151
+# Source0-md5:	27b17d1f3abb433695a11181f94958f1
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -41,8 +41,8 @@ Rich Text Format format.
 
 %description -l pl.UTF-8
 Biblioteka ktnef zawiera API do obsługi danych TNEF. API pozwala na
-dostęp do załączników, właściwości wiadomości (TNEF/MAPI) i pozwala
-podejrzeć/wyjąć wiadomość w formacie RTF.
+dostęp do załączników, właściwości wiadomości (TNEF/MAPI) i
+pozwala podejrzeć/wyjąć wiadomość w formacie RTF.
 
 %package devel
 Summary:	Header files for %{kaname} development
@@ -89,14 +89,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-%ghost %{_libdir}/libKF5Tnef.so.5
-%attr(755,root,root) %{_libdir}/libKF5Tnef.so.*.*.*
 %{_datadir}/qlogging-categories5/ktnef.categories
 %{_datadir}/qlogging-categories5/ktnef.renamecategories
+%ghost %{_libdir}/libKPim5Tnef.so.5
+%attr(755,root,root) %{_libdir}/libKPim5Tnef.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KF5/KTNEF
-%{_libdir}/cmake/KF5Tnef
-%{_libdir}/libKF5Tnef.so
 %{_libdir}/qt5/mkspecs/modules/qt_KTNef.pri
+%{_includedir}/KPim5/KTNEF
+%{_libdir}/cmake/KF5Tnef
+%{_libdir}/cmake/KPim5Tnef
+%{_libdir}/libKPim5Tnef.so
