@@ -1,31 +1,31 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	23.08.4
+%define		kdeappsver	24.01.95
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		ktnef
 Summary:	ktnef
 Name:		ka5-%{kaname}
-Version:	23.08.4
-Release:	1
+Version:	24.01.95
+Release:	0.1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	ab2e56a41a27ef06980da6bf5bf7746c
+Source0:	https://download.kde.org/unstable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	f8e58ee1f7c9cd73c20b252c9c0c000d
 URL:		http://www.kde.org/
-BuildRequires:	Qt5Core-devel >= %{qtver}
-BuildRequires:	Qt5Gui-devel >= 5.11.1
-BuildRequires:	Qt5Test-devel >= 5.9.0
-BuildRequires:	Qt5Widgets-devel
+BuildRequires:	Qt6Core-devel >= %{qtver}
+BuildRequires:	Qt6Gui-devel >= 5.11.1
+BuildRequires:	Qt6Test-devel >= 5.9.0
+BuildRequires:	Qt6Widgets-devel
 BuildRequires:	gettext-devel
 BuildRequires:	ka5-kcalutils-devel >= %{kdeappsver}
-BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
-BuildRequires:	kf5-kcalendarcore-devel >= %{kframever}
-BuildRequires:	kf5-kcontacts-devel >= %{kframever}
-BuildRequires:	kf5-ki18n-devel >= %{kframever}
+BuildRequires:	kf6-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf6-kcalendarcore-devel >= %{kframever}
+BuildRequires:	kf6-kcontacts-devel >= %{kframever}
+BuildRequires:	kf6-ki18n-devel >= %{kframever}
 BuildRequires:	ninja
-BuildRequires:	qt5-build >= %{qtver}
+BuildRequires:	qt6-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
@@ -41,8 +41,8 @@ Rich Text Format format.
 
 %description -l pl.UTF-8
 Biblioteka ktnef zawiera API do obsługi danych TNEF. API pozwala na
-dostęp do załączników, właściwości wiadomości (TNEF/MAPI) i
-pozwala podejrzeć/wyjąć wiadomość w formacie RTF.
+dostęp do załączników, właściwości wiadomości (TNEF/MAPI) i pozwala
+podejrzeć/wyjąć wiadomość w formacie RTF.
 
 %package devel
 Summary:	Header files for %{kaname} development
@@ -65,7 +65,8 @@ Pliki nagłówkowe dla programistów używających %{kaname}.
 	-G Ninja \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
 	-DHTML_INSTALL_DIR=%{_kdedocdir} \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+	-DQT_MAJOR_VERSION=6
 %ninja_build -C build
 
 %if %{with tests}
@@ -87,14 +88,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-%{_datadir}/qlogging-categories5/ktnef.categories
-%{_datadir}/qlogging-categories5/ktnef.renamecategories
-%ghost %{_libdir}/libKPim5Tnef.so.5
-%attr(755,root,root) %{_libdir}/libKPim5Tnef.so.*.*.*
+%attr(755,root,root) %{_libdir}/libKPim6Tnef.so.*.*
+%ghost %{_libdir}/libKPim6Tnef.so.6
+%{_datadir}/qlogging-categories6/ktnef.categories
+%{_datadir}/qlogging-categories6/ktnef.renamecategories
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/qt5/mkspecs/modules/qt_KTNef.pri
-%{_includedir}/KPim5/KTNEF
-%{_libdir}/cmake/KPim5Tnef
-%{_libdir}/libKPim5Tnef.so
+%{_includedir}/KPim6
+%{_libdir}/cmake/KPim6Tnef
+%{_libdir}/libKPim6Tnef.so
